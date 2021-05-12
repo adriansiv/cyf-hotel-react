@@ -63,3 +63,11 @@ tr {
   margin-left: 2%;
   margin-right: 2%;
 }
+
+.notHighlighted {
+  background-color: white;
+}
+
+.highlighted {
+  background-color: rgb(207, 148, 148);
+}

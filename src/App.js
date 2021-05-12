@@ -5,6 +5,7 @@ import Header from "./Heading";
 import Bookings from "./Bookings";
 import TouristInfoCards from "./TouristInfoCards";
 import Footer from "./Footer";
+import Restaurant from "./Restaurant";
 import "./App.css";
 
 // Data
@@ -46,6 +47,7 @@ const App = () => {
     <div className="App">
       <Header />
       <Bookings />
+      <Restaurant />
       <TouristInfoCards cityInfo={cities} />
       <Footer contactDetails={address} />
     </div>

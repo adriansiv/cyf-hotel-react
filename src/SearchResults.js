@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 
 const SearchResults = props => {
+  const [isClicked, setIsClicked] = useState(false);
+  const clicked = () => {
+    setIsClicked(!isClicked);
+    console.log(isClicked);
+  };
+
   return (
     <table class="table">
       <thead>
@@ -22,7 +28,10 @@ const SearchResults = props => {
           const checkInDateMoment = moment(booking.checkInDate);
           const checkOutDateMoment = moment(booking.checkOutDate);
           return (
-            <tr>
+            <tr
+              onClick={clicked}
+              className={isClicked ? "highlighted" : "notHighlighted"}
+            >
               <td>{booking.id}</td>
               <td>{booking.title}</td>
               <td>{booking.firstName}</td>
