@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "./Search.js";
 import SearchResults from "./SearchResults.js";
-import FakeBookings from "./data/fakeBookings.json";
 
-const Bookings = () => {
+const Bookings = props => {
   const [bookings, setBookings] = useState([]);
 
-  const search = searchVal => {
-    const guests = FakeBookings;
+  useEffect(() => {
+    console.log("Some Data");
+    fetch(`https://cyf-react.glitch.me`)
+      .then(response => response.json())
+      .then(data => setBookings(data));
+  }, []);
 
-    const filteredGuest = guests.filter(guest => {
-      return guest.firstName.toLowerCase() === searchVal.toLowerCase();
+  const search = searchVal => {
+    const filteredGuests = bookings.filter(guest => {
+      return (
+        guest.firstName.toLowerCase().indexOf(searchVal.toLowerCase()) !== -1
+      );
     });
-    setBookings(filteredGuest);
+
+    setBookings(filteredGuests);
   };
 
   return (
